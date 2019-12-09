@@ -11,33 +11,39 @@
   </head>
 
   <body>
-    <main role="main" class="site-wrapper">
-      <header role="main" class="site-header">
+    <div class="site-wrapper">
+      <header role="header" class="site-header">
         <div class="site-header__title">Messages</div>
       </header>
-      <div class="messages">
+      <main role="main" class="messages">
         <article class="message">
           <div class="message__author">Won</div>
           <p class="message__content">Where should we meet later?</p>
-          <span class="message__time">Mar 25, 2018 7:25pm</span>
+          <span class="message__time"
+            ><time datetime="2018-03-25 19:25">Mar 25, 2018 7:25pm</time></span
+          >
         </article>
         <article class="message">
           <div class="message__author">Luke</div>
-          <p class="mdivessage__content">
+          <p class="message__content">
             Let's meet at the iCafe in Merchant City. https://goo.gl/maps/aza4h9nUBhn
           </p>
-          <span class="message__time">Mar 25, 2018 7:35pm</span>
+          <span class="message__time"
+            ><time datetime="2018-03-25 19:35">Mar 25, 2018 7:35pm</time></span
+          >
         </article>
         <article class="message">
           <div class="message__author">Won</div>
           <p class="message__content">
             Ok! https://media.giphy.com/media/l41K4KlVE8dgozf8I/giphy.gif
           </p>
-          <span class="message__time"> <time datetime="2018-03-25">Mar 25, 2018</time> <time datetime="19:38">7:38pm</time></span>
+          <span class="message__time"
+            ><time datetime="2018-03-25 19:38">Mar 25, 2018 7:38pm</time></span
+          >
         </article>
-      </div>
+      </main>
       <div id="result" class="result"></div>
-    </main>
+    </div>
     <script defer src="/js/3-result.js"></script>
   </body>
 </html>

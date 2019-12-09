@@ -5,16 +5,19 @@
   padding: 0.5em;
 }
 /* Add your own CSS code below */
-.countries--second {
-  justify-content: space-around;
-}
 .countries--first {
-  flex-direction: row;
+  justify-content: right;
+}
+
+.countries--second {
+  justify-content: space-between;
 }
 .countries--third {
   flex-direction: column;
+  justify-content: space-around;
+  padding-top: 200px;
 }
 .countries--fourth {
-  flex-direction: column-reverse;
   justify-content: space-between;
+  flex-direction: column-reverse;
 }

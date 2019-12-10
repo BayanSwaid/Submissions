@@ -1,0 +1,30 @@
+header {
+    opacity: 50%;
+    text-align: center;
+}
+h1 {
+    color: lightblue;
+}
+li {
+    color: rgb(23, 75, 117);
+}
+img {
+    width: 150px;
+    height: 150px;
+    align-self: center;
+    margin-left: 40%;
+}
+ol {
+    background-color: lavenderblush;
+    padding: 30px;
+
+}
+ul {
+    background-color: lightcyan;
+    padding: 30px;
+
+}
+footer {
+    text-align: center;
+    font-size: 12px;
+}

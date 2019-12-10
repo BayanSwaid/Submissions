@@ -11,14 +11,8 @@ li {
 img {
     width: 150px;
     height: 150px;
-    align-self: center;
-    margin-left: 40%;
 }
-ol {
-    background-color: lavenderblush;
-    padding: 30px;
 
-}
 ul {
     background-color: lightcyan;
     padding: 30px;
@@ -28,3 +22,19 @@ footer {
     text-align: center;
     font-size: 12px;
 }
+.menu {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      
+        }
+  .menuTab {
+    float: left;
+  }
+  
+  a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    background-color: #dddddd;
+  }

@@ -1,0 +1,13 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+#wrapper {
+    margin: auto;
+    width: 1000px;
+}
+.globeImage {
+    height: 250px;
+    width: 80%;
+}
+

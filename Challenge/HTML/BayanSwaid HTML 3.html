@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8" />
@@ -9,13 +9,79 @@
 
 <body>
     <div id="wrapper">
-        <div id="firstBlock"><img class="globeImage" src="earth.jpg" alt="Globe" />
+        <div class="firstBlock">
             <div class="title">
-            <h3>Bayan's Programming</h3>
-            <h4>No Generation Gap</h4>
+                <h3>Bayan's Programming</h3>
+                <h4>No Generation Gap</h4>
+            </div>
         </div>
+        <div class="navBlock">
+            <nav>
+                <a href="#">Home</a> |
+                <a href="#">Services</a> |
+                <a href="#">Customers</a> |
+                <a href="#">About</a> |
+                <a href="#">Contact</a> |
+                <a href="#">News</a>
+            </nav>
         </div>
-    </div>
+        <div class="content">
+        <div class="leftSide">
+            <div class="mainMenu"><br>
+                <h3>Main Menu</h3>
+                <br>
+                <ul>
+                    <li><a href="#">Goals</a></li>
+                    <li><a href="#">Vision</a></li>
+                    <li><a href="#">Newest Projects</a></li>
+                    <li><a href="#">Customer of the Week</a></li>
+                    <li><a href="#">Employee of the Month</a></li>
+                    <li><a href="#">New Services</a></li>
+                    <li><a href="#">E-Learning</a></li>
+                    <li><a href="#">Address</a></li>
+                    <li><a href="#">Calender</a></li>
+                </ul>
+            </div><br>
+            <div class="block"><br>
+                <h3>Block</h3><br>
+                <input class="blockContent" type="text" placeholder="Enter Block content here..."/>
+                <p>By all kinds of absurd and funny things like someone that uses ham as a background for their manicure pictures, someone who posts strange selfies without thinking about the consequences, and so on.</p>
+
+            </div><br><br>
+            <form class="contactForm">
+                <h3>Contact us:</h3><br>
+                    <input type="text" placeholder="Your name: "/><br><br>
+                    <input type="text" placeholder="Your email: "/><br><br>
+                    <input type="text" placeholder="Your message: "/><br><br>
+                    <input type="radio"/>Complaint<input type="radio"/>Suggestion<br><br>
+                    <input type="submit" value="Send" /><br>
+                </form> 
+        </div><br>
+        <div class="rightSide">
+            <div class="rightTopSide">
+                <h2>Gallery</h2>
+                <br><hr>
+                <p>I want to be able to have a text description with each gallery. Since there is no editor in the foogallery custom post type, I experimented and tried adding the editor which worked fine but then I need to alter both the custom post type file and the (in this example) the gallery-default template. Which I think is bad practice. Is there a better way to add this feature? I tried making an extension on my own (via the added boilerplate) but my knowledge in coding is close to zero so I didn’t succeed. Is this maybe a feature/function that might be added in a future release? It would be really handy and I noticed someone else asking the same thing before.</p>
+            </div><br><br>
+            <div class="rightBottomSide">
+                <div class="rightBottomLeft"> <h2>Subscription</h2>
+                    <br><hr>
+                    <p>I want to be able to have a text description with each gallery. Since there is no editor in the foogallery custom post type, I experimented and tried adding the editor which worked fine but then I need to alter both the custom post type file and the (in this example) the gallery-default template. Which I think is bad practice. Is there a better way to add this feature?</p>
+                   <br> <input class= "bottomButton" type="button" value="Read more" />
+                </div>
+                
+                    <div class="rightBottomRight"> <h2>Other Services</h2>
+                    <br><hr>
+                    <p>I want to be able to have a text description with each gallery. Since there is no editor in the foogallery custom post type, I experimented and tried adding the editor which worked fine but then I need to alter both the custom post type file and the (in this example) the gallery-default template. Which I think is bad practice. Is there a better way to add this feature?</p>
+                <br><input class= "bottomButton" type="button" value="Read more" />
+                </div>
+            </div>
+        </div></div>   
+        
+        <div id="footer">
+        <hr>
+        <footer>Copyright &#169; 2019 <a href="https://codi.tech">Codi Tech</a></footer>
+    </div></div>
 </body>
 
 </html>

@@ -2,28 +2,111 @@
     padding: 0;
     margin: 0;
 }
-#wrapper {
-    margin: 0 auto;
-    width: 900px;
-
-}
 body {
-    width: 900px;
-    background-image: url(bac.jpg);
-    background-repeat: repeat-y;
+    background-color: #0a041f;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+#wrapper {
+    margin: auto;
+    width: 100%;
+    max-width: 860px;
+    text-align: center;
+    color: white;
+    padding-top: 10px;
+    font-size: 12px;
 }
 .firstBlock{
-    position: relative;
-}
-.globeImage {
-    height: 250px;
-    width: 80%;
-}
+    border: 1px solid gray  ;
+    background-image: url("earth.jpg"); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 200px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    margin-bottom: 5px;
+    text-align: left;
+    }
 .title {
-    position: absolute;
+    color: white;    
+    font-size: 12px;
+    padding-left: 90px;
+    padding-top: 40px;
+}
+.navBlock{
+    background-color: #0f072e;
+    height: 40px;
+    
+}
+.navBlock nav {
+    padding-top: 10px;
+}
+.navBlock a {
+    text-decoration: none;
     color: white;
-    bottom: 10px;
-    top: 130px;
-    left: 250px;
+    font-size: 14px;
+    padding-left: 35px;
+    padding-right: 35px;
+    
+}
+.leftSide {
+    width: 20%;
+    text-align: left;
+    float: left;
+}
+.leftSide div {
+    padding-left: 20px;
 }
 
+.leftSide h3 {
+    text-indent: 10px;
+    color: white;
+}
+.leftSide ul {  
+    list-style-type: square;
+    line-height: 15px;
+}
+.leftSide ul a{
+    color: white;
+}
+.block{
+    text-align: left;
+}
+.blockContent {
+    background-color: transparent;
+    color: white;
+    border: none;
+    margin-bottom: 10px;
+}
+.rightSide{
+    text-align: left;
+    float: left;
+    line-height: 15px;
+    width: 74%;
+    margin-left: 50px;
+}
+.rightBottomLeft {
+    margin-right: 10px;
+    float: left;
+    width: 49%;
+}
+
+.rightBottomRight {
+    float: left;
+    width: 49%;
+}
+.bottomButton {
+    border-radius: 0;
+    height: 40px;
+    width: 100px;
+}
+#footer {
+    position:fixed;
+    left:0px;
+    height:30px;
+    font-size: 14px;
+    bottom: 0;
+    width:100%;
+}
+footer {
+    padding-top: 5px;
+}

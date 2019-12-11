@@ -13,8 +13,7 @@ Education
 2016-2019
 :   **BSc, Computer Science**; Lebanese International University (Beirut)
 
-    *Thesis title: Deep Learning Approaches to the Self-Awesomeness
-     Estimation Problem*
+:   **Baccalaureat, General Science**; Elias Abou Chabce (ZOuk Mikael)
 
 Experience
 ----------

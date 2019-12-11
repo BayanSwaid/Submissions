@@ -100,6 +100,17 @@ body {
     width: 100px;
 }
 #footer {
+    clear: both;
+    height: 200px;
+    width: 900px;
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+    font-family: arial, helvetica;
+    font-weight: bold ;
+    font-size: 11px;
+    }
+/*
+#footer {
     position:fixed;
     left:0px;
     height:30px;
@@ -109,4 +120,4 @@ body {
 }
 footer {
     padding-top: 5px;
-}
+}*/

@@ -1,6 +1,8 @@
 Bayan Swaid
 ============
 
+![](programming.png)
+
 -------------------     ----------------------------
 Lebanon                                bayan.swaid.sk@gmail.com
 Mount Lebanon                          +961/71841568
@@ -13,7 +15,7 @@ Education
 2016-2019
 :   **BSc, Computer Science**; Lebanese International University (Beirut)
 
-:   **Baccalaureat, General Science**; Elias Abou Chabce (ZOuk Mikael)
+:   **Baccalaureat, General Science**; Elias Abou Chabce (Zouk Mikael)
 
 Experience
 ----------

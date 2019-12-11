@@ -3,11 +3,27 @@
     margin: 0;
 }
 #wrapper {
-    margin: auto;
-    width: 1000px;
+    margin: 0 auto;
+    width: 900px;
+
+}
+body {
+    width: 900px;
+    background-image: url(bac.jpg);
+    background-repeat: repeat-y;
+}
+.firstBlock{
+    position: relative;
 }
 .globeImage {
     height: 250px;
     width: 80%;
+}
+.title {
+    position: absolute;
+    color: white;
+    bottom: 10px;
+    top: 130px;
+    left: 250px;
 }
 

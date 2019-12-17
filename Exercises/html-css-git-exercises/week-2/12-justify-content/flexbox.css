@@ -16,7 +16,6 @@
 }
 .countries--third {
   flex-direction: column;
-  justify-content: space-around;
   padding-top: 200px;
 }
 .countries--fourth {

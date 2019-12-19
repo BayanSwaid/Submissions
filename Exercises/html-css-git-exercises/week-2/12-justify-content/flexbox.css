@@ -11,15 +11,22 @@
 .countries--first {
   justify-content: right;
 }
+.countries--first .country {
+  padding: 0.5em;
+}
 .countries--second {
   justify-content: space-between;
 }
+.countries--third .country {
+  padding: 0.5em;
+}
 .countries--third {
   flex-direction: column;
-  padding-top: 200px;
+}
+.countries--fourth .country {
+  padding: 0.5em;
 }
 .countries--fourth {
   flex-direction: column-reverse;
   justify-content: space-between;
-  height: 50px;
 }

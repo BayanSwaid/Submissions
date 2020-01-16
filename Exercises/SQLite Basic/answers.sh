@@ -15,3 +15,9 @@ SELECT name, Age, Gender, Points FROM students WHERE name = 'Layal'"
 "DELETE FROM students WHERE name='Layal'"
 
 
+Joins:
+
+"SELECT E.name as Employee, C.name as Company, C.Date from employees E JOIN companies C on E.Company = C.name"
+"SELECT E.name FROM employees E JOIN companies C on C.name = E.Company WHERE C.Date < 2000"
+"SELECT C.name FROM companies C JOIN employees E on Company = C.name WHERE Role = 'Graphic Designer'"
+

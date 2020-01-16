@@ -1,73 +1,145 @@
 import React, { Component } from "react";
 import "./App.css";
+import Nav from "./Nav";
+import TodayWeather from "./TodayWeather";
+import HourlyWeather from "./HourlyWeather.js";
+// import FakeWeather from "./data/FakeWeather.json";
 import storm from "../src/img/weather-icons/storm.svg";
-import cloudy from "../src/img/weather-icons/partlycloudy.svg";
-import Search from "./search.js";
-import Weather from "./weather_now";
-import WeatherLater from "./weatherLater";
-import FakeWeather from "./data/FakeWeather.json";
-
+import clear from "../src/img/weather-icons/clear.svg";
+//import cloudy from "../src/img/weather-icons/cloudy.svg";
+import drizzle from "../src/img/weather-icons/drizzle.svg";
+import fog from "../src/img/weather-icons/fog.svg";
+import mostlycloudy from "../src/img/weather-icons/mostlycloudy.svg";
+//import partlycloudy from "../src/img/weather-icons/storm.svg";
+import rain from "../src/img/weather-icons/rain.svg";
+import snow from "../src/img/weather-icons/snow.svg";
+import { isEmpty } from "lodash";
 class App extends Component {
   constructor(props) {
     super(props);
-    /*  this.state = {
-      description : "",
-      minTemp: "",
-      maxTemp: "",
-      humidity: "",
-      pressure: "",
-    };*/
+    this.state = {
+      cityName: "london",
+      list: [],
+      today: {}
+    };
   }
-  /* componentDidMount() { 
+  async componentDidMount() {
+    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${this.state.cityName}&cnt=8&units=metric&appid=16e9b24a3bbd12706f0661ba7c4a48d1`;
+    const response = await fetch(url);
+    const data = await response.json();
     this.setState({
-      description: FakeWeather.list[0].weather[0].main,
-      minTemp: FakeWeather.list[0].main.temp_min,
-      maxTemp: FakeWeather.list[0].main.temp_max,
-      humidity: FakeWeather.list[0].main.humidity,
-      pressure: FakeWeather.list[0].main.pressure
-        });
-  }*/
-  render() {
-    console.log(FakeWeather.list[0].dt_txt);
+      list: data.list,
+      today: {
+        description: data.list[1].weather[0].description,
+        temp: data.list[1].main.temp,
+        tempMax: data.list[1].main.temp_max,
+        tempMin: data.list[1].main.temp_min,
+        humidity: data.list[1].main.humidity,
+        pressure: data.list[1].main.pressure,
+        nbId: data.list[1].weather[0].id
+      }
+    });
+  }
 
+  handle = () => {
+    const cityName = this.state.cityName;
+    let cond = true;
+    if (isEmpty(cityName)) {
+      return (cond = false);
+    }
+  };
+
+  onSubmit = async e => {
+    this.setState({
+      cityName: e
+    });
+    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${e}&cnt=8&units=metric&appid=16e9b24a3bbd12706f0661ba7c4a48d1`;
+    const response = await fetch(url);
+    const data = await response.json();
+    this.setState({
+      today: {
+        description: data.list[1].weather[0].description,
+        temp: data.list[1].main.temp,
+        tempMax: data.list[1].main.temp_max,
+        tempMin: data.list[1].main.temp_min,
+        humidity: data.list[1].main.humidity,
+        pressure: data.list[1].main.pressure,
+        nbId: data.list[1].weather[0].id
+      },
+      list: data.list
+    });
+  };
+
+  icon = nb => {
+    if (nb < 300) {
+      return storm;
+    } else if (nb >= 300 && nb < 500) {
+      return drizzle;
+    } else if (nb >= 500 && nb < 600) {
+      return rain;
+    } else if (nb >= 600 && nb < 700) {
+      return snow;
+    } else if (nb >= 700 && nb < 800) {
+      return fog;
+    } else if (nb === 800) {
+      return clear;
+    } else if (nb === 801) {
+      return fog;
+    } else if (nb >= 801 && nb < 805) {
+      return mostlycloudy;
+    }
+  };
+
+  backgroundPicker = nb => {
+    if (nb >= 300 && nb < 800) {
+      return "#9EBAD5";
+    } else {
+      return "#2490E1";
+    }
+  };
+  navColor = nb => {
+    if (nb >= 300 && nb < 800) {
+      return "#6C83AA";
+    } else {
+      return "#246CD7";
+    }
+  };
+
+  buttonBackground = nb => {
+    if (nb >= 300 && nb < 800) {
+      return "#575BAA";
+    } else {
+      return "#134DB1";
+    }
+  };
+
+  render() {
     return (
       <div className="app">
-        <nav>
-          <Search />
-        </nav>
-        <div className="container">
-          <div className="today-container">
-            <Weather
-              description={FakeWeather.list[0].weather[0].main}
-              pressure={FakeWeather.list[0].main.pressure}
-              minTemp={FakeWeather.list[0].main.temp_min}
-              maxTemp={FakeWeather.list[0].main.temp_max}
-              humidity={FakeWeather.list[0].main.humidity}
-            />
-          </div>
-          <div className="hourly-title"> </div>
-          <div className="row">
-            <WeatherLater time="03:00" degree="8 &#8451;" imgSrc={storm} />
-            <div className="hours-weather">
-              <WeatherLater time="06:00" degree="9 &#8451;" imgSrc={storm} />
-            </div>
-            <div className="hours-weather">
-              <WeatherLater time="09:00" degree="14 &#8451;" imgSrc={storm} />
-            </div>
-            <div className="hours-weather">
-              <WeatherLater time="" degree="17 &#8451;" imgSrc={storm} />
-            </div>
-            <div className="hours-weather">
-              <WeatherLater time="15:00" degree="18 &#8451;" imgSrc={storm} />
-            </div>
-            <div className="hours-weather">
-              <WeatherLater time="18:00" degree="16 &#8451;" imgSrc={storm} />
-            </div>
-            <div className="hours-weather">
-              <WeatherLater time="9.00" degree="13 &#8451;" imgSrc={storm} />
-            </div>
-          </div>
-        </div>
+        <Nav
+          onSubmit={this.onSubmit}
+          cityName={this.state.cityName}
+          handle={this.handle}
+          navColor={this.navColor}
+          nbID={this.state.today.nbId}
+          buttonBackground={this.buttonBackground}
+        ></Nav>
+        <TodayWeather
+          description={this.state.today.description}
+          tempMin={this.state.today.tempMin}
+          tempMax={this.state.today.tempMax}
+          pressure={this.state.today.pressure}
+          humidity={this.state.today.humidity}
+          icon={this.icon}
+          nbID={this.state.today.nbId}
+          backgroundPicker={this.backgroundPicker}
+        ></TodayWeather>
+        <HourlyWeather
+          list={this.state.list}
+          icon={this.icon}
+          nbID={this.state.today.nbId}
+          backgroundPicker={this.backgroundPicker}
+        ></HourlyWeather>
       </div>
     );
   }

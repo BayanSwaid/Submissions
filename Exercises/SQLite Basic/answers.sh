@@ -21,3 +21,12 @@ Joins:
 "SELECT E.name FROM employees E JOIN companies C on C.name = E.Company WHERE C.Date < 2000"
 "SELECT C.name FROM companies C JOIN employees E on Company = C.name WHERE Role = 'Graphic Designer'"
 
+
+Count & Filter:
+
+"SELECT name FROM students WHERE Points = (SELECT max(Points) FROM students)"
+"SELECT avg(Points) FROM students"
+"SELECT count(name) FROM students WHERE Points = 500"
+"SELECT name FROM students WHERE name like '%s%'"
+"SELECT name FROM students ORDER BY Points DESC"
+

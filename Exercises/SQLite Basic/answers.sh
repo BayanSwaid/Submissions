@@ -13,3 +13,5 @@ Creating Table:
 SELECT name, Age, Gender, Points FROM students WHERE name = 'Layal'"
 "UPDATE graduates SET Graduation = '08/09/2018' WHERE name = 'Layal'"
 "DELETE FROM students WHERE name='Layal'"
+
+

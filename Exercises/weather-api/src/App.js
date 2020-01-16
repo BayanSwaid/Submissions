@@ -2,18 +2,16 @@ import React, { Component } from "react";
 import "./App.css";
 import Nav from "./Nav";
 import TodayWeather from "./TodayWeather";
-import HourlyWeather from "./HourlyWeather.js";
-// import FakeWeather from "./data/FakeWeather.json";
+import HourlyWeather from "./HourlyWeather";
 import storm from "../src/img/weather-icons/storm.svg";
 import clear from "../src/img/weather-icons/clear.svg";
-//import cloudy from "../src/img/weather-icons/cloudy.svg";
 import drizzle from "../src/img/weather-icons/drizzle.svg";
 import fog from "../src/img/weather-icons/fog.svg";
 import mostlycloudy from "../src/img/weather-icons/mostlycloudy.svg";
-//import partlycloudy from "../src/img/weather-icons/storm.svg";
 import rain from "../src/img/weather-icons/rain.svg";
 import snow from "../src/img/weather-icons/snow.svg";
 import { isEmpty } from "lodash";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -23,22 +21,28 @@ class App extends Component {
       today: {}
     };
   }
+
   async componentDidMount() {
-    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${this.state.cityName}&cnt=8&units=metric&appid=16e9b24a3bbd12706f0661ba7c4a48d1`;
-    const response = await fetch(url);
-    const data = await response.json();
-    this.setState({
-      list: data.list,
-      today: {
-        description: data.list[1].weather[0].description,
-        temp: data.list[1].main.temp,
-        tempMax: data.list[1].main.temp_max,
-        tempMin: data.list[1].main.temp_min,
-        humidity: data.list[1].main.humidity,
-        pressure: data.list[1].main.pressure,
-        nbId: data.list[1].weather[0].id
-      }
-    });
+    try {
+      const url = `http://api.openweathermap.org/data/2.5/forecast?q=${this.state.cityName}&cnt=8&units=metric&appid=16e9b24a3bbd12706f0661ba7c4a48d1`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      this.setState({
+        list: data.list,
+        today: {
+          description: data.list[1].weather[0].description,
+          temp: data.list[1].main.temp,
+          tempMax: data.list[1].main.temp_max,
+          tempMin: data.list[1].main.temp_min,
+          humidity: data.list[1].main.humidity,
+          pressure: data.list[1].main.pressure,
+          nbId: data.list[1].weather[0].id
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   handle = () => {
@@ -50,24 +54,35 @@ class App extends Component {
   };
 
   onSubmit = async e => {
-    this.setState({
-      cityName: e
-    });
-    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${e}&cnt=8&units=metric&appid=16e9b24a3bbd12706f0661ba7c4a48d1`;
-    const response = await fetch(url);
-    const data = await response.json();
-    this.setState({
-      today: {
-        description: data.list[1].weather[0].description,
-        temp: data.list[1].main.temp,
-        tempMax: data.list[1].main.temp_max,
-        tempMin: data.list[1].main.temp_min,
-        humidity: data.list[1].main.humidity,
-        pressure: data.list[1].main.pressure,
-        nbId: data.list[1].weather[0].id
-      },
-      list: data.list
-    });
+    try {
+      this.setState({
+        cityName: e
+      });
+      const url = `http://api.openweathermap.org/data/2.5/forecast?q=${e}&cnt=8&units=metric&appid=16e9b24a3bbd12706f0661ba7c4a48d1`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      console.log(response);
+      if (response.status === 404) {
+        console.log("Error 404, Country doesn't exit!, please try again later");
+        alert("Contry not found");
+      }
+
+      this.setState({
+        today: {
+          description: data.list[1].weather[0].description,
+          temp: data.list[1].main.temp,
+          tempMax: data.list[1].main.temp_max,
+          tempMin: data.list[1].main.temp_min,
+          humidity: data.list[1].main.humidity,
+          pressure: data.list[1].main.pressure,
+          nbId: data.list[1].weather[0].id
+        },
+        list: data.list
+      });
+    } catch (err) {
+      alert("Connection problems");
+    }
   };
 
   icon = nb => {

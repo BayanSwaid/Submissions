@@ -86,7 +86,7 @@ else{
   for(var i = 1; i < newText.length; i++){
 name += newText[i] + " ";
   }
-  console.log('Hello ' + name)
+  console.log('Hello ' + name + "!")
 }
 }
 

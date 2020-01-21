@@ -69,7 +69,7 @@ function unknownCommand(c){
  * @returns {void}
  */
 function help() {
-  console.log("Possiple commands: \nhello\nhelp\nquit\nexit");
+  console.log("Possiple commands: \nhello\nhelp\nquit\nexit\nhello 'Your name' ");
 }
 
 /**

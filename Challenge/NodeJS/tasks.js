@@ -43,6 +43,10 @@ function onDataReceived(text) {
   else if(text === 'help\n'){
     help();
   }
+  else if(text.startsWith("hello"))
+  {
+    hello(text);
+  }
   else{
     unknownCommand(text);
   }
@@ -73,8 +77,17 @@ function help() {
  *
  * @returns {void}
  */
-function hello(){
-  console.log('hello!')
+function hello(text){
+  if(!text)
+  console.log('Hello!')
+else{
+  var newText = text.split(" ");
+  var name = "";
+  for(var i = 1; i < newText.length; i++){
+name += newText[i] + " ";
+  }
+  console.log('Hello ' + name)
+}
 }
 
 

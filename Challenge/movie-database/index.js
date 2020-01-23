@@ -66,7 +66,6 @@ app.get("/movie/add", (req, res) => {
 app.get("/movie/get", (req, res) => {
     res.json({
         status: 200,
-        message: "hello get",
         data: movies
     });
 });
@@ -75,22 +74,33 @@ app.get("/movie/get/:ORDER", (req, res) => {
     if (order == 'by-date')
         res.json({
             status: 200,
-            message: "hello ordered get",
             data: movies.sort((a, b) => a.year - b.year)
         });
     else if (order == 'by-rating')
         res.json({
             status: 200,
-            message: "hello get",
             data: movies.sort((a, b) => a.rating - b.rating)
         });
     else if (order == 'by-title')
         res.json({
             status: 200,
-            message: "hello get",
             data: movies.sort((a, b) => a.title - b.title)
         });
 });
+app.get("/movie/get/id/:id", (req, res) => {
+    var index = parseInt(req.params.id);
+    if(index < movies.length){
+    res.json({
+        status: 200,
+        data: movies[index]
+    });}
+    else{
+        res.json({status:404,
+             error:true, 
+             message:'the movie +' + index + ' does not exist'}
+    );}
+});
+
 app.get("/movie/edit", (req, res) => {
     res.json({
         status: 200,

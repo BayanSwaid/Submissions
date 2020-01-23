@@ -148,10 +148,20 @@ app.get("/movie/edit", (req, res) => {
         message: "hello update"
     });
 });
-app.get("/movie/delete", (req, res) => {
-    res.json({
-        status: 200,
-        message: "hello delete"
-    });
+app.get("/movie/delete/:d_id", (req, res) => {
+    const id = parseInt(req.params.d_id);
+    if (id < movies.length) {
+        movies[id] = null;
+        res.json({
+            status: 200,
+            data: movies
+        });
+    } else {
+        res.json({
+            status: 404,
+            error: true,
+            message: 'the movie ' + id + ' does not exist'
+        });
+    }
 });
 app.listen(2000, () => console.log("Server is listening to port 2000"));

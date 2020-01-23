@@ -57,7 +57,7 @@ app.get("/search", (req, res) => {
         });
     }
 });
-app.get("/movie/add", (req, res) => {
+app.get("/movie/add?title", (req, res) => {
     res.json({
         status: 200,
         message: "hello add"
@@ -84,7 +84,7 @@ app.get("/movie/get/:ORDER", (req, res) => {
     else if (order == 'by-title')
         res.json({
             status: 200,
-            data: movies.sort((a, b) => a.title - b.title)
+            data: movies.sort((a, b) => a.title.localeCompare(b.title))
         });
 });
 app.get("/movie/get/id/:id", (req, res) => {

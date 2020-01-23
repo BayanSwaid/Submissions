@@ -70,6 +70,27 @@ app.get("/movie/get", (req, res) => {
         data: movies
     });
 });
+app.get("/movie/get/:ORDER", (req, res) => {
+    var order = req.params.ORDER;
+    if (order == 'by-date')
+        res.json({
+            status: 200,
+            message: "hello ordered get",
+            data: movies.sort((a, b) => a.year - b.year)
+        });
+    else if (order == 'by-rating')
+        res.json({
+            status: 200,
+            message: "hello get",
+            data: movies.sort((a, b) => a.rating - b.rating)
+        });
+    else if (order == 'by-title')
+        res.json({
+            status: 200,
+            message: "hello get",
+            data: movies.sort((a, b) => a.title - b.title)
+        });
+});
 app.get("/movie/edit", (req, res) => {
     res.json({
         status: 200,

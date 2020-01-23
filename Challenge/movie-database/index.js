@@ -57,11 +57,50 @@ app.get("/search", (req, res) => {
         });
     }
 });
-app.get("/movie/add?title", (req, res) => {
-    res.json({
-        status: 200,
-        message: "hello add"
-    });
+app.get("/movie/add", (req, res) => {
+    const title = req.query.title,
+        year = req.query.year,
+        rating = req.query.rating;
+    if (year && title) {
+
+        if (rating) {
+            if (year.length == 4 && !isNaN(year)) {
+                movies.push({
+                    title: title,
+                    year: year,
+                    rating: rating
+                });
+                res.json({
+                    status: 200,
+                    data: movies
+                });
+            } else {
+                res.json({
+                    status: 403,
+                    error: true,
+                    message: 'you cannot create a movie with wrong year!'
+                });
+            }
+        } else {
+            movies.push({
+                title: title,
+                year: year,
+                rating: 4
+            });
+            res.json({
+                status: 200,
+                data: movies
+            });
+
+        }
+
+    } else {
+        res.json({
+            status: 403,
+            error: true,
+            message: 'you cannot create a movie without providing a title and a year'
+        });
+    }
 });
 app.get("/movie/get", (req, res) => {
     res.json({
@@ -89,16 +128,18 @@ app.get("/movie/get/:ORDER", (req, res) => {
 });
 app.get("/movie/get/id/:id", (req, res) => {
     var index = parseInt(req.params.id);
-    if(index < movies.length){
-    res.json({
-        status: 200,
-        data: movies[index]
-    });}
-    else{
-        res.json({status:404,
-             error:true, 
-             message:'the movie +' + index + ' does not exist'}
-    );}
+    if (index < movies.length) {
+        res.json({
+            status: 200,
+            data: movies[index]
+        });
+    } else {
+        res.status(404).json({
+            status: 404,
+            error: true,
+            message: 'the movie +' + index + ' does not exist'
+        });
+    }
 });
 
 app.get("/movie/edit", (req, res) => {

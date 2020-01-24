@@ -142,10 +142,19 @@ app.get("/movie/get/id/:id", (req, res) => {
     }
 });
 
-app.get("/movie/edit", (req, res) => {
+app.get("/movie/edit/:e_id", (req, res) => {
+    var editId = parseInt(req.params.e_id);
+    var title = req.query.title, rating = req.query.rating;
+    if(title){
+        movies[editId].title = title;
+    }
+    if(rating){
+        movies[editId].rating = rating;
+
+    }
     res.json({
         status: 200,
-        message: "hello update"
+        data: movies
     });
 });
 app.get("/movie/delete/:d_id", (req, res) => {

@@ -1,5 +1,9 @@
 const express = require("express");
 const app = express();
+const bodyParser = require('body-parser');
+// Configuring body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
 const movies = [{
         title: 'Jaws',
         year: 1975,
@@ -57,14 +61,14 @@ app.get("/search", (req, res) => {
         });
     }
 });
-app.get("/movie/add", (req, res) => {
-    const title = req.query.title,
-        year = req.query.year,
-        rating = req.query.rating;
+app.post("/movie/create", (req, res) => {
+    console.log(req.body);
+     let title = req.body.t,
+         year = req.body.y,
+         rating = req.body.r;
     if (year && title) {
-
-        if (rating) {
-            if (year.length == 4 && !isNaN(year)) {
+        if (year.length == 4 && !isNaN(year)) {
+            if (rating) {
                 movies.push({
                     title: title,
                     year: year,
@@ -74,26 +78,25 @@ app.get("/movie/add", (req, res) => {
                     status: 200,
                     data: movies
                 });
+
             } else {
+                movies.push({
+                    title: title,
+                    year: year,
+                    rating: 4
+                });
                 res.json({
-                    status: 403,
-                    error: true,
-                    message: 'you cannot create a movie with wrong year!'
+                    status: 200,
+                    data: movies
                 });
             }
         } else {
-            movies.push({
-                title: title,
-                year: year,
-                rating: 4
-            });
             res.json({
-                status: 200,
-                data: movies
+                status: 403,
+                error: true,
+                message: 'you cannot create a movie with wrong year!'
             });
-
         }
-
     } else {
         res.json({
             status: 403,
@@ -102,13 +105,13 @@ app.get("/movie/add", (req, res) => {
         });
     }
 });
-app.get("/movie/get", (req, res) => {
+app.get("/movie/read", (req, res) => {
     res.json({
         status: 200,
         data: movies
     });
 });
-app.get("/movie/get/:ORDER", (req, res) => {
+app.get("/movie/read/:ORDER", (req, res) => {
     var order = req.params.ORDER;
     if (order == 'by-date')
         res.json({
@@ -126,7 +129,7 @@ app.get("/movie/get/:ORDER", (req, res) => {
             data: movies.sort((a, b) => a.title.localeCompare(b.title))
         });
 });
-app.get("/movie/get/id/:id", (req, res) => {
+app.get("/movie/read/id/:id", (req, res) => {
     var index = parseInt(req.params.id);
     if (index < movies.length) {
         res.json({
@@ -141,23 +144,23 @@ app.get("/movie/get/id/:id", (req, res) => {
         });
     }
 });
-
-app.get("/movie/edit/:e_id", (req, res) => {
-    var editId = parseInt(req.params.e_id);
-    var title = req.query.title, rating = req.query.rating;
-    if(title){
+app.put("/movie/update/:e_id", (req, res) => {
+    let editId = parseInt(req.body.e_id);
+    let title = req.body.title,
+        rating = req.body.rating;
+        console.log(req.body);
+    if (title) {
         movies[editId].title = title;
     }
-    if(rating){
+    if (rating) {
         movies[editId].rating = rating;
-
     }
     res.json({
         status: 200,
         data: movies
     });
 });
-app.get("/movie/delete/:d_id", (req, res) => {
+app.delete("/movie/delete/:d_id", (req, res) => {
     const id = parseInt(req.params.d_id);
     if (id < movies.length) {
         movies[id] = null;
@@ -173,4 +176,4 @@ app.get("/movie/delete/:d_id", (req, res) => {
         });
     }
 });
-app.listen(2000, () => console.log("Server is listening to port 2000"));
+app.listen(2000, () => console.log("Server is listening to port 2000"));app.use(bodyParser); //Now deprecated

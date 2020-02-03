@@ -1,0 +1,16 @@
+.intro {
+    background-color: cornflowerblue;
+    margin-top: 20px;
+    text-align: left;
+}
+.intro-image{
+    padding: 10px;
+    height: 30px;
+    width: 30px;
+    float: left;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
